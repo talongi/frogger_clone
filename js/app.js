@@ -58,7 +58,7 @@ Player.prototype.reset = function(){
   this.y = this.yStartPosition;
 };
 
-//Modify the Player update method to respond to key presses
+//Modify the Player update method to respond to key presses and the player's x and y position.
 Player.prototype.update = function(key) {
   if (this.key === 'left' && this.x > this.offScreenLeft) {
     this.x = this.x - this.playerMovement;

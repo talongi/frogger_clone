@@ -78,10 +78,19 @@ var Engine = (function(global) {
      * functionality this way (you could just implement collision detection
      * on the entities themselves within your app.js file).
      */
+
+    /*This function updates the game by by passing the time delta to the
+     * updateEntities function and checking for collisions
+     */
     function update(dt) {
         updateEntities(dt);
         checkCollisions();
     }
+
+    /*The checkCollisions function loops through enemy objects in the allEnemies
+    * and checks if the player's boundaries intersect the enemie's boundaries on
+    * the canvas. If so, the player's score is decreased and the player's position is reset.
+    */
 
     function checkCollisions(){
       for (var i = 0; i < allEnemies.length; i++)
@@ -146,13 +155,13 @@ var Engine = (function(global) {
                 ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
             }
         }
-
+        //The render function updates the display of the player's score and the rendering of entities on the canvas
         scoreDisplay();
         renderEntities();
     }
 
+    //This function actually renders the player's score on the canvas, and adjust the color if it's postive or negative.
     function scoreDisplay() {
-      //score
       ctx.clearRect(0,0,120,50);
       ctx.font = "24px Arial";
       ctx.fillText("Score: "+player.score, 10, 20);
