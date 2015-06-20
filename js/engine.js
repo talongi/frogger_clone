@@ -15,6 +15,7 @@
  */
 
 var Engine = (function(global) {
+    "use strict";
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
      * set the canvas elements height/width and add it to the DOM.
@@ -57,7 +58,7 @@ var Engine = (function(global) {
          * function again as soon as the browser is able to draw another frame.
          */
         win.requestAnimationFrame(main);
-    };
+    }
 
     /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
@@ -88,19 +89,19 @@ var Engine = (function(global) {
     }
 
     /*The checkCollisions function loops through enemy objects in the allEnemies
-    * and checks if the player's boundaries intersect the enemie's boundaries on
-    * the canvas. If so, the player's score is decreased and the player's position is reset.
-    */
+     * and checks if the player's boundaries intersect the enemie's boundaries on
+     * the canvas. If so, the player's score is decreased and the player's position is reset.
+     */
 
-    function checkCollisions(){
-      for (var i = 0; i < allEnemies.length; i++)
-      if (player.x < allEnemies[i].x + allEnemies[i].width &&
-        player.x + player.width > allEnemies[i].x &&
-        player.y < allEnemies[i].y + allEnemies[i].height &&
-        player.height + player.y > allEnemies[i].y) {
-          player.score -= 10;
-          player.reset();
-        }
+    function checkCollisions() {
+        for (var i = 0; i < allEnemies.length; i++)
+            if (player.x < allEnemies[i].x + allEnemies[i].width &&
+                player.x + player.width > allEnemies[i].x &&
+                player.y < allEnemies[i].y + allEnemies[i].height &&
+                player.height + player.y > allEnemies[i].y) {
+                player.score -= 10;
+                player.reset();
+            }
     }
 
     /* This is called by the update function  and loops through all of the
@@ -128,12 +129,12 @@ var Engine = (function(global) {
          * for that particular row of the game level.
          */
         var rowImages = [
-                'images/water-block.png',   // Top row is water
-                'images/stone-block.png',   // Row 1 of 3 of stone
-                'images/stone-block.png',   // Row 2 of 3 of stone
-                'images/stone-block.png',   // Row 3 of 3 of stone
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
+                'images/water-block.png', // Top row is water
+                'images/stone-block.png', // Row 1 of 3 of stone
+                'images/stone-block.png', // Row 2 of 3 of stone
+                'images/stone-block.png', // Row 3 of 3 of stone
+                'images/grass-block.png', // Row 1 of 2 of grass
+                'images/grass-block.png' // Row 2 of 2 of grass
             ],
             numRows = 6,
             numCols = 5,
@@ -162,14 +163,14 @@ var Engine = (function(global) {
 
     //This function actually renders the player's score on the canvas, and adjust the color if it's postive or negative.
     function scoreDisplay() {
-      ctx.clearRect(0,0,120,50);
-      ctx.font = "24px Arial";
-      ctx.fillText("Score: "+player.score, 10, 20);
-      if (player.score < 0) {
-        ctx.fillStyle = "red";
-      }else {
-        ctx.fillStyle = "black";
-      };
+        ctx.clearRect(0, 0, 120, 50);
+        ctx.font = "24px Arial";
+        ctx.fillText("Score: " + player.score, 10, 20);
+        if (player.score < 0) {
+            ctx.fillStyle = "red";
+        } else {
+            ctx.fillStyle = "black";
+        }
     }
 
     /* This function is called by the render function and is called on each game
