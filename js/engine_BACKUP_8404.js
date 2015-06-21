@@ -15,7 +15,10 @@
  */
 
 var Engine = (function(global) {
+<<<<<<< HEAD
+=======
     "use strict";
+>>>>>>> origin/master
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
      * set the canvas elements height/width and add it to the DOM.
@@ -58,7 +61,11 @@ var Engine = (function(global) {
          * function again as soon as the browser is able to draw another frame.
          */
         win.requestAnimationFrame(main);
+<<<<<<< HEAD
+    };
+=======
     }
+>>>>>>> origin/master
 
     /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
@@ -79,15 +86,29 @@ var Engine = (function(global) {
      * functionality this way (you could just implement collision detection
      * on the entities themselves within your app.js file).
      */
+<<<<<<< HEAD
+=======
 
     /*This function updates the game by by passing the time delta to the
      * updateEntities function and checking for collisions
      */
+>>>>>>> origin/master
     function update(dt) {
         updateEntities(dt);
         checkCollisions();
     }
 
+<<<<<<< HEAD
+    function checkCollisions(){
+      for (var i = 0; i < allEnemies.length; i++)
+      if (player.x < allEnemies[i].x + allEnemies[i].width &&
+        player.x + player.width > allEnemies[i].x &&
+        player.y < allEnemies[i].y + allEnemies[i].height &&
+        player.height + player.y > allEnemies[i].y) {
+          player.score -= 10;
+          player.reset();
+        }
+=======
     /*The checkCollisions function loops through enemy objects in the allEnemies
      * and checks if the player's boundaries intersect the enemie's boundaries on
      * the canvas. If so, the player's score is decreased and the player's position is reset.
@@ -102,6 +123,7 @@ var Engine = (function(global) {
                 player.score -= 10;
                 player.reset();
             }
+>>>>>>> origin/master
     }
 
     /* This is called by the update function  and loops through all of the
@@ -129,12 +151,21 @@ var Engine = (function(global) {
          * for that particular row of the game level.
          */
         var rowImages = [
+<<<<<<< HEAD
+                'images/water-block.png',   // Top row is water
+                'images/stone-block.png',   // Row 1 of 3 of stone
+                'images/stone-block.png',   // Row 2 of 3 of stone
+                'images/stone-block.png',   // Row 3 of 3 of stone
+                'images/grass-block.png',   // Row 1 of 2 of grass
+                'images/grass-block.png'    // Row 2 of 2 of grass
+=======
                 'images/water-block.png', // Top row is water
                 'images/stone-block.png', // Row 1 of 3 of stone
                 'images/stone-block.png', // Row 2 of 3 of stone
                 'images/stone-block.png', // Row 3 of 3 of stone
                 'images/grass-block.png', // Row 1 of 2 of grass
                 'images/grass-block.png' // Row 2 of 2 of grass
+>>>>>>> origin/master
             ],
             numRows = 6,
             numCols = 5,
@@ -156,11 +187,27 @@ var Engine = (function(global) {
                 ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
             }
         }
+<<<<<<< HEAD
+
+=======
         //The render function updates the display of the player's score and the rendering of entities on the canvas
+>>>>>>> origin/master
         scoreDisplay();
         renderEntities();
     }
 
+<<<<<<< HEAD
+    function scoreDisplay() {
+      //score
+      ctx.clearRect(0,0,120,50);
+      ctx.font = "24px Arial";
+      ctx.fillText("Score: "+player.score, 10, 20);
+      if (player.score < 0) {
+        ctx.fillStyle = "red";
+      }else {
+        ctx.fillStyle = "black";
+      };
+=======
     //This function actually renders the player's score on the canvas, and adjust the color if it's postive or negative.
     function scoreDisplay() {
         ctx.clearRect(0, 0, 120, 50);
@@ -171,6 +218,7 @@ var Engine = (function(global) {
         } else {
             ctx.fillStyle = "black";
         }
+>>>>>>> origin/master
     }
 
     /* This function is called by the render function and is called on each game
@@ -214,4 +262,8 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
+<<<<<<< HEAD
 })(this);
+=======
+})(this);
+>>>>>>> origin/master
